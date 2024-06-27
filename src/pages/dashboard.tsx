@@ -26,9 +26,10 @@ const Dashboard = () => {
         <section className="widgetcontainer">
           <WidgetItem percent={40} amount={true} value={340000} heading="Revenue" color="rgb(0,115,255)"/>
 
-          <WidgetItem percent={40} amount={true} value={340000} heading="Revenue" color="rgb(0,115,255)"/>
+          <WidgetItem percent={-14} amount={true} value={400} heading="Users" color="rgb(0,198,202)"/>
 
-          <WidgetItem percent={40} amount={true} value={340000} heading="Revenue" color="rgb(0,115,255)"/>
+          <WidgetItem percent={80}  value={23000} heading="Transaction" color="rgb(255,196,0)"/>
+          <WidgetItem percent={30}  value={1000} heading="Products" color="rgb(75,0,255)"/>
         </section>
       </main>
     </div>
@@ -46,7 +47,7 @@ const WidgetItem = ({
   value,
   percent,
   color,
-  amount,
+  amount=false,
 }: WidgetItemProps) => (
   <article className="widget">
     <div className="widgetInfo">
@@ -63,8 +64,12 @@ const WidgetItem = ({
         </span>
       )}
     </div>
-    <div className="widgetCircle">
-      <span color={color}>{percent}%{" "}</span>
+    <div className="widgetCircle"  style={{
+      background:`conic-gradient(
+      ${color} ${Math.abs(percent)/100*360}deg,
+      rgb(255,255,255) 0)`
+    }}>
+      <span style={{color}}>{percent}%{" "}</span>
     </div>
   </article>
 );

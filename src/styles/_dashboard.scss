@@ -27,10 +27,11 @@
 
 
     .widget{
-        width: 16rem;
+        min-width: 16rem;
         background-color: white;
         box-shadow: 0 0 10px rgba(0,0,0,0.132);
         padding: 2rem;
+        border-radius: 10px;
         @include flex(row,space-between);
 
         .widgetInfo{
@@ -52,6 +53,7 @@
           @include square(5rem);
           border-radius: 50%;
           display: grid;
+          flex: none;
           place-items: center;
           background-color: aquamarine;
           &::before{
