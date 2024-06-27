@@ -63,6 +63,9 @@ const WidgetItem = ({
         </span>
       )}
     </div>
+    <div className="widgetCircle">
+      <span color={color}>{percent}%{" "}</span>
+    </div>
   </article>
 );
 
