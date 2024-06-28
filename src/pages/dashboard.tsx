@@ -4,7 +4,8 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import userimg from "../assets/userpic.png";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
-
+import data from "../assets/data.json";
+import { BarChart } from "../components/charts";
 const Dashboard = () => {
   return (
     <div className="adminContainer">
@@ -58,15 +59,19 @@ const Dashboard = () => {
           <div className="revenuechart">
             <h2>Revenue & Transaction</h2>
             {/* graph */}
+            <BarChart data1={[300,144,433,655,237,755,190]} data2={[200,444,433,155,230,790,390]} title1="Revenue" title2="Transaction" bgcolor1="rgb(0,115,255)" bgcolor2="rgba(53,162,235,0.8)"/>
           </div>
           <div className="dashboardcategories">
             <h2>Inventory</h2>
             <div>
-              <CategoriesItem
-                heading="Laptops"
-                color="hsl(169,100%,50%)"
-                value={70}
-              />
+              {data.categories.map((i) => (
+                <CategoriesItem
+                key={i.heading}
+                  heading={i.heading}
+                  color={`hsl(${i.value*2},${i.value}%,50%)`}
+                  value={i.value}
+                />
+              ))}
             </div>
           </div>
         </section>
