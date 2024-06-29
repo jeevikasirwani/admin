@@ -11,7 +11,7 @@ import {
   ChartData,
   ChartOptions,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 // import faker from 'faker';
 
 ChartJS.register(
@@ -44,35 +44,70 @@ export const BarChart = ({
   horizontal = false,
   labels = months,
 }: BarChartProps) => {
-    
-  const options:ChartOptions<"bar"> = {
+  const options: ChartOptions<"bar"> = {
     responsive: true,
-    indexAxis:horizontal?"y":"x",
+    indexAxis: horizontal ? "y" : "x",
     plugins: {
       legend: {
-        display:false,
+        display: false,
       },
       title: {
         display: false,
-        text: "Chart.js Bar Chart",
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: {
+          display: false,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
       },
     },
   };
 
-  const data:ChartData<"bar",number[],string> = {
+  const data: ChartData<"bar", number[], string> = {
     labels,
     datasets: [
       {
         label: title1,
         data: data1,
         backgroundColor: bgcolor1,
+        barThickness: "flex",
+        barPercentage: 1,
+        categoryPercentage: 0.4,
       },
       {
         label: title2,
         data: data2,
         backgroundColor: bgcolor2,
+        barThickness: "flex",
+        barPercentage: 1,
+        categoryPercentage: 0.4,
       },
     ],
   };
   return <Bar options={options} data={data} />;
+};
+
+interface doughnutProps {
+  labels: string[];
+  data: number[];
+  bgcolor: string[];
+cutout?:number|string;
+legends?:boolean;
+offset?:number[];
+
+}
+export const DoughnutChart = ({labels,data,bgcolor,cutout,legends=true,offset}: doughnutProps) => {
+  const doughnutData: ChartData<"doughnut", number[], string> = {
+    labels,
+    datasets:[{}]  };
+  const doughnutOption: ChartOptions<"doughnut"> = {};
+
+  return <DoughnutChart data={doughnutData} options={doughnutOption} />;
 };

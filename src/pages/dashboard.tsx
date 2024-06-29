@@ -6,6 +6,7 @@ import userimg from "../assets/userpic.png";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 import data from "../assets/data.json";
 import { BarChart } from "../components/charts";
+import { BiMaleFemale } from "react-icons/bi";
 const Dashboard = () => {
   return (
     <div className="adminContainer">
@@ -74,6 +75,16 @@ const Dashboard = () => {
               ))}
             </div>
           </div>
+        </section>
+
+        <section className="transactionContainer">
+          <div className="genderChart">
+              <h2>Gender Ratio</h2>
+              {/* {Chart} */}
+              <p><BiMaleFemale/></p>
+          </div>
+          {/* table */}
+          
         </section>
       </main>
     </div>
